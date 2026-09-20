@@ -1,129 +1,239 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
-
-@custom-variant dark (&:is(.dark *));
-
-@theme inline {
-    --font-heading: var(--font-sans);
-    --font-sans: var(--font-sans);
-    --color-sidebar-ring: var(--sidebar-ring);
-    --color-sidebar-border: var(--sidebar-border);
-    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-    --color-sidebar-accent: var(--sidebar-accent);
-    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-    --color-sidebar-primary: var(--sidebar-primary);
-    --color-sidebar-foreground: var(--sidebar-foreground);
-    --color-sidebar: var(--sidebar);
-    --color-chart-5: var(--chart-5);
-    --color-chart-4: var(--chart-4);
-    --color-chart-3: var(--chart-3);
-    --color-chart-2: var(--chart-2);
-    --color-chart-1: var(--chart-1);
-    --color-ring: var(--ring);
-    --color-input: var(--input);
-    --color-border: var(--border);
-    --color-destructive: var(--destructive);
-    --color-accent-foreground: var(--accent-foreground);
-    --color-accent: var(--accent);
-    --color-muted-foreground: var(--muted-foreground);
-    --color-muted: var(--muted);
-    --color-secondary-foreground: var(--secondary-foreground);
-    --color-secondary: var(--secondary);
-    --color-primary-foreground: var(--primary-foreground);
-    --color-primary: var(--primary);
-    --color-popover-foreground: var(--popover-foreground);
-    --color-popover: var(--popover);
-    --color-card-foreground: var(--card-foreground);
-    --color-card: var(--card);
-    --color-foreground: var(--foreground);
-    --color-background: var(--background);
-    --radius-sm: calc(var(--radius) * 0.6);
-    --radius-md: calc(var(--radius) * 0.8);
-    --radius-lg: var(--radius);
-    --radius-xl: calc(var(--radius) * 1.4);
-    --radius-2xl: calc(var(--radius) * 1.8);
-    --radius-3xl: calc(var(--radius) * 2.2);
-    --radius-4xl: calc(var(--radius) * 2.6);
-}
 
 :root {
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.145 0 0);
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.145 0 0);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
-    --primary-foreground: oklch(0.985 0 0);
-    --secondary: oklch(0.97 0 0);
-    --secondary-foreground: oklch(0.205 0 0);
-    --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
-    --accent: oklch(0.97 0 0);
-    --accent-foreground: oklch(0.205 0 0);
-    --destructive: oklch(0.577 0.245 27.325);
-    --border: oklch(0.922 0 0);
-    --input: oklch(0.922 0 0);
-    --ring: oklch(0.708 0 0);
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
-    --radius: 0.625rem;
-    --sidebar: oklch(0.985 0 0);
-    --sidebar-foreground: oklch(0.145 0 0);
-    --sidebar-primary: oklch(0.205 0 0);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.97 0 0);
-    --sidebar-accent-foreground: oklch(0.205 0 0);
-    --sidebar-border: oklch(0.922 0 0);
-    --sidebar-ring: oklch(0.708 0 0);
+  background: #070707;
+  color: #f5f1e8;
 }
 
-.dark {
-    --background: oklch(0.145 0 0);
-    --foreground: oklch(0.985 0 0);
-    --card: oklch(0.205 0 0);
-    --card-foreground: oklch(0.985 0 0);
-    --popover: oklch(0.205 0 0);
-    --popover-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.922 0 0);
-    --primary-foreground: oklch(0.205 0 0);
-    --secondary: oklch(0.269 0 0);
-    --secondary-foreground: oklch(0.985 0 0);
-    --muted: oklch(0.269 0 0);
-    --muted-foreground: oklch(0.708 0 0);
-    --accent: oklch(0.269 0 0);
-    --accent-foreground: oklch(0.985 0 0);
-    --destructive: oklch(0.704 0.191 22.216);
-    --border: oklch(1 0 0 / 10%);
-    --input: oklch(1 0 0 / 15%);
-    --ring: oklch(0.556 0 0);
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
-    --sidebar: oklch(0.205 0 0);
-    --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.488 0.243 264.376);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.269 0 0);
-    --sidebar-accent-foreground: oklch(0.985 0 0);
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.556 0 0);
+* {
+  box-sizing: border-box;
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-    }
-  body {
-    @apply bg-background text-foreground;
-    }
-  html {
-    @apply font-sans;
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      #30210f 0%,
+      #120d08 35%,
+      #050505 75%
+    );
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+  font: inherit;
+}
+
+.game-page {
+  min-height: 100vh;
+  padding: 60px 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.hoard-panel {
+  width: 100%;
+  max-width: 1100px;
+}
+
+.hoard-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 35px;
+}
+
+.eyebrow {
+  color: #b89452;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+h1 {
+  margin: 8px 0;
+  font-size: clamp(44px, 7vw, 82px);
+  letter-spacing: -4px;
+}
+
+.subtitle {
+  max-width: 600px;
+  color: #98938a;
+  line-height: 1.6;
+}
+
+.balance {
+  min-width: 210px;
+  height: fit-content;
+  padding: 20px;
+  border: 1px solid #4a3920;
+  background: #100e0b;
+}
+
+.balance span {
+  display: block;
+  color: #777169;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.balance strong {
+  display: block;
+  margin-top: 8px;
+  color: #d7b56a;
+  font-size: 20px;
+}
+
+.vault-card {
+  min-height: 390px;
+  padding: 50px;
+  border: 1px solid #4b3820;
+  background:
+    radial-gradient(
+      circle at center,
+      #392614,
+      #130e09 65%,
+      #080706
+    );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    inset 0 0 100px rgba(0, 0, 0, 0.8),
+    0 20px 80px rgba(0, 0, 0, 0.35);
+}
+
+.vault-status {
+  text-align: center;
+}
+
+.vault-status span {
+  display: block;
+  color: #777169;
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+
+.vault-status strong {
+  display: block;
+  margin-top: 8px;
+  color: #d7b56a;
+  font-size: 80px;
+}
+
+.multiplier {
+  margin-top: 10px;
+  font-size: 48px;
+  font-weight: 800;
+}
+
+.payout {
+  margin-top: 25px;
+  color: #777169;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.payout strong {
+  display: block;
+  margin-top: 7px;
+  color: #f5f1e8;
+  font-size: 24px;
+  letter-spacing: 0;
+}
+
+.market-card {
+  margin-top: 20px;
+  padding: 25px;
+  border: 1px solid #29251f;
+  background: #0d0d0c;
+}
+
+.market-title {
+  display: flex;
+  justify-content: space-between;
+  color: #817b70;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.market-card h2 {
+  margin: 15px 0 25px;
+}
+
+.market-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.market-grid div {
+  padding-top: 14px;
+  border-top: 1px solid #29251f;
+}
+
+.market-grid span {
+  display: block;
+  color: #6f6a61;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.market-grid strong {
+  display: block;
+  margin-top: 7px;
+  font-size: 21px;
+}
+
+.event {
+  margin-top: 15px;
+  padding: 15px;
+  border-left: 2px solid #b89452;
+  background: #12100c;
+  color: #bdb7aa;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.actions button {
+  padding: 21px;
+  border: 1px solid #49391f;
+  cursor: pointer;
+  font-weight: 800;
+  letter-spacing: 2px;
+  transition: 0.2s;
+}
+
+.actions button:hover {
+  transform: translateY(-2px);
+}
+
+.extract-button {
+  background: #b89452;
+  color: #080706;
+}
+
+.descend-button {
+  background: #14110d;
+  color: #d7b56a;
+}
+
+@media (max-width: 700px) {
+  .hoard-header {
+    flex-direction: column;
+  }
+
+  .market-grid,
+  .actions {
+    grid-template-columns: 1fr;
+  }
 }

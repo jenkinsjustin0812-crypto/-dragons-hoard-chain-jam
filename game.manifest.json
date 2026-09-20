@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "apiVersion": 1,
+  "gameId": "dragonshoard",
+  "defaultLocale": "en",
+  "locales": {
+    "en": {
+      "name": "Dragon's Hoard",
+      "description": "A dark-fantasy extraction casino game where players wager, descend into a dragon's vault, manage risk, and extract their winnings."
+    }
+  },
+  "presentation": {
+    "mode": "full-iframe",
+    "hostPanels": {
+      "openSession": true,
+      "history": true,
+      "status": true
+    }
+  },
+  "capabilities": {
+    "openSession": true,
+    "submitAction": true,
+    "forfeitExpiredSession": false,
+    "cancelStuckRandomness": true,
+    "resize": true
+  }
+}

@@ -21,5 +21,7 @@
   },
   "menuColor": "default",
   "menuAccent": "subtle",
-  "registries": {}
+  "registries": {
+    "@chain": "https://chain-ui.vercel.app/r/{name}.json"
+  }
 }
