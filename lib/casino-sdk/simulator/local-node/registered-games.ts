@@ -1,3 +1,5 @@
+// Mirrors the host's whitelist events so a game registered by any tool (not only the
+// contracts/ watcher) shows up in the harness's game picker.
 import type { Address, PublicClient } from 'viem';
 import { localCasinoHostAbi } from '../src/local-node/artifacts.ts';
 

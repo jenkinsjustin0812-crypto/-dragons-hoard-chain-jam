@@ -1,3 +1,5 @@
+// Runs a workspace member's package.json script with the package manager that is running the
+// current script, so the SDK works the same under bun, npm, pnpm and yarn.
 import { spawn } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';

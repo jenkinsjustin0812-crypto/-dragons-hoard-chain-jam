@@ -1,3 +1,11 @@
+// One-command local backend for the casino-sdk simulator: a chain (spawns the
+// bundled in-memory Hardhat node unless an RPC is already listening), the real
+// Verify Network VRF router + fulfilling node (from the SDK's bundled
+// local-verify-network), and a minimal casino deployment (test token,
+// LocalCasinoHost + vault, the real CoinflipGame). Also compiles, deploys and
+// registers every game contract dropped into contracts/ and keeps watching the
+// folder. Writes local-node/deployed.json for the harness UI and keeps
+// fulfilling randomness until stopped.
 import { spawn, type ChildProcess } from 'node:child_process';
 import { randomUUID } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
@@ -23,7 +31,7 @@ import {
   localTestTokenAbi,
   localTestTokenBytecode,
 } from '../src/local-node/artifacts.ts';
-import { coinflipGameAbi, coinflipGameBytecode } from "./coinflip-game-artifact.ts";
+import { coinflipGameAbi, coinflipGameBytecode } from '../src/local-node/coinflip-game-artifact.ts';
 import { watchGameContracts, type DeployedGame } from './game-contracts.ts';
 import { watchRegisteredGames, type RegisteredGame } from './registered-games.ts';
 

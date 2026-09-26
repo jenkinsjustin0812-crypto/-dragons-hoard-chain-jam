@@ -1,3 +1,7 @@
+// Compiles developer-dropped .sol files in contracts/ (the harness infra
+// sources are excluded) with the bundled solc, deploys every contract that
+// implements ICasinoGameV2, registers it on the local host and keeps watching
+// the folder so new or edited files go live without a restart.
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, readdirSync, watch } from 'node:fs';
 import { basename, resolve } from 'node:path';

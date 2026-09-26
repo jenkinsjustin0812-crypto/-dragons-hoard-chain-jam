@@ -27,6 +27,7 @@ export function startRound(
     status: "PLAYING",
     balance: state.balance - wager,
     wager,
+
     floor: 1,
     multiplier: 1,
     currentPayout: wager,
@@ -35,10 +36,12 @@ export function startRound(
     sessionKey: null,
     transactionHash: null,
 
-    waitingForChain: true,
+    // IMPORTANT:
+    // Local demo does not wait for Chain.
+    waitingForChain: false,
 
     lastEvent:
-      "Opening the vault on Chain...",
+      "Vault opened. Choose DESCEND or EXTRACT.",
   };
 }
 
@@ -67,19 +70,24 @@ export function descend(
     multiplierTable.length - 1
   );
 
-  const nextMultiplier = multiplierTable[index];
+  const nextMultiplier =
+    multiplierTable[index];
 
   const nextPayout =
     state.wager * nextMultiplier;
 
   return {
     ...state,
+
     floor: nextFloor,
     multiplier: nextMultiplier,
     currentPayout: nextPayout,
-    waitingForChain: true,
+
+    // Local demo continues immediately.
+    waitingForChain: false,
+
     lastEvent:
-      `Requesting Chain randomness for floor ${nextFloor}...`,
+      `Floor ${nextFloor} reached. Current payout: ${nextPayout.toFixed(2)}`,
   };
 }
 
@@ -90,11 +98,20 @@ export function extract(
     return state;
   }
 
+  const payout = state.currentPayout;
+
   return {
     ...state,
-    waitingForChain: true,
+
+    status: "EXTRACTED",
+
+    // Give the payout back to the local demo balance.
+    balance: state.balance + payout,
+
+    waitingForChain: false,
+
     lastEvent:
-      "Submitting extraction request to Chain...",
+      `Extraction successful. You received ${payout.toFixed(2)}.`,
   };
 }
 
@@ -103,6 +120,7 @@ export function resetRound(
 ): GameState {
   return {
     ...state,
+
     status: "IDLE",
 
     wager: 10,
