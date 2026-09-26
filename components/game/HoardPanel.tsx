@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import RunePuzzle from "./RunePuzzle";
 import type { GameState } from "@/lib/game/gameState";
 import MetaMaskButton from "../wallet/MetaMaskButton";
 
@@ -38,6 +39,14 @@ export default function HoardPanel({
   } | null>(null);
 
   const [aiLoading, setAiLoading] = useState(false);
+
+  // Rune puzzle state
+  const [runeSolved, setRuneSolved] = useState(false);
+
+  // Every new floor gets a new puzzle.
+  useEffect(() => {
+    setRuneSolved(false);
+  }, [state.floor]);
 
   async function askDragonEconomist() {
     setAiLoading(true);
@@ -613,6 +622,15 @@ export default function HoardPanel({
             </section>
 
             {/* =================================================
+                VAULT RUNE PUZZLE
+            ================================================= */}
+
+            <RunePuzzle
+              floor={state.floor}
+              onSolved={() => setRuneSolved(true)}
+            />
+
+            {/* =================================================
                 ACTIONS
             ================================================= */}
 
@@ -637,12 +655,23 @@ export default function HoardPanel({
                 type="button"
                 className="descend-button"
                 onClick={onDescend}
+                disabled={!runeSolved}
+                style={{
+                  opacity: runeSolved ? 1 : 0.45,
+                  cursor: runeSolved
+                    ? "pointer"
+                    : "not-allowed",
+                }}
               >
 
-                DESCEND DEEPER
+                {runeSolved
+                  ? "DESCEND DEEPER"
+                  : "SOLVE RUNE FIRST"}
 
                 <small>
-                  Increase potential payout
+                  {runeSolved
+                    ? "Increase potential payout"
+                    : "Unlock the vault path"}
                 </small>
 
               </button>
