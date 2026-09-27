@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Dragon's Hoard",
   description:
-    "A dark-fantasy extraction casino game on Chain.",
+    "A dark-fantasy extraction casino game where players wager, descend into a dragon's vault, manage risk, and extract their winnings.",
 };
 
 export default function RootLayout({
@@ -15,7 +15,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <script
+          async
+          src="https://jam.chain.wtf/widget.js"
+        ></script>
+
+        {children}
+      </body>
     </html>
   );
 }
